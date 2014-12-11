@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+<ul>
+    <li><a href="/articles/all">Articles</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+    
+{% if article.thumbnail %}
+{% endif %}
+ <div id="modal-01" class="reveal-modal">
+
+		   <img class="scale-with-grid" src="/static/{{article.thumbnail}}"  alt="" />
+
+		   <div class="description-box">
+                    <h1>{{article.title}}</h1>
+                  <p style="background-color:white;"><font color="brown">{{article.body}}</font></p>
+                     <p>{{article.likes}}   ...people liked this article   <a href="http://127.0.0.1:8000/articles/like/{{article.id}}/"><button type="button">LIKE</button></a> </p>
+			   
+            <span class="categories"><i class="icon-tag"></i>ARTCICLES YOU WILL LOVE TO  LIKE</span>
+		   </div>
+
+         <div class="link-box">
+            
+		     <a href="/articles/all"> Other Articles</a>
+         </div>
+      </div><!-- modal-01 End -->
+
+{% endblock %}

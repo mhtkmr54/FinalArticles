@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE HTML PUBLpx "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>{% block title %}my base{% endblock %}</title>
+    
+
+</head>
+<style>
+body{
+            text-align:center;
+        
+        }
+        
+        #page{
+            width:960px;
+            text-align:left;
+            margin:10px auto 20px auto;
+            background-color:#0c0c0c;
+        }
+        #sidebar{
+            float:left;
+            width:200px;
+            border:1px solid #000;
+        }
+        
+        #content{
+            float:center;
+            text-align:center;
+            width:600px;
+            border:1px solid #f00;
+            padding:10px;
+            
+        }
+    
+</style>
+
+
+<body>
+    <div id="page">
+        
+        <div id="sidebar">
+            {% block sidebar %}
+            <ul>
+                <li>
+                    <a href="/articles/all">Articles</a>
+                </li>
+                <li>
+                    <a href="/admin/">ADMIN</a>
+                </li>
+                <li>
+                    <a href="/search/">SEARCH ARTICLE</a>
+                </li>
+                 <li>
+                    <a href="/contact/">Contact us now!!</a>
+                </li>
+                
+            </ul>
+            {% endblock %}
+        </div>
+   
+     
+     <div id="content">
+        {% block content %}content here is this replaced{% endblock %}
+         <p>new !! click t <a href="/accounts/register/">to register</a></p>
+         <p>already registered <a href="/accounts/login/">to login</a></p>
+        <img src="{% static "http://guidolib.sourceforge.net/imgs/python.png" width="200" %}"
+        
+     </div>
+     
+    
+ </div>
+   
+   
+</body>
+</html>

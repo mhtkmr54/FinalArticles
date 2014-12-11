@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    {% if error %}
+        <p style="color: red;">Please submit a search term.</p>
+    {% endif %}
+<p>You searched for: <strong>{{ query }}</strong></p>
+
+{% if books %}
+    <p>Found {{ books|length }} ARTICLE{{ books|pluralize }}.</p>
+    <ul>
+        {% for article in books %}
+        <li><a href="/articles/get/{{article.id}}/">{{ article.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No article matched your search criteria.</p>
+{% endif %}
+  {% endblock %}

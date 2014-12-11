@@ -1,0 +1,104 @@
+<form action="/articles/create/" method="post">{% csrf_token %}
+    <ul>
+        {{form.as_ul}}
+    </ul>
+    
+    <input type="submit" name="submit" value="Create Article">
+  </form>
+
+
+  <p>Title: <input type="text" name="title" value="{{ title }}"></p>
+        <p>body: <textarea name="article" rows="10" cols="50">{{ body }}</textarea></p>
+        <p>pub_date: <input type="varchar" name="pub_date" value="{{ pub_date }}"></p>
+        <input type="submit" value="Submit">
+            
+            
+            
+      books. article    
+             {% if article.thumbnail %}
+    <p><img src="/static/assets/uploaded_files/{{article.thumbnail}}" width="200"/></p>
+     {% endif %}
+            
+            comment form in html
+         <h2>Comments</h2>
+{% for c in article.comment_set.all %}
+
+<p>{{c.name}}:{{c.body}}}</p>
+
+
+{% endfor %}
+
+
+<p><a href="/articles/add_comment/{{article.id}}">Add Comment</a></p>   
+            
+            
+            
+            
+               errors = []
+    if request.method == 'POST':
+        if not request.POST.get('title', ''):
+            errors.append('Enter a title.')
+       # elif not request.POST.get('body', ''):
+           # errors.append('Enter a article.')
+        elif request.POST.get('pub_date') and '/' not in request.POST['pub_date']:
+            errors.append('Enter a valid pub_date.')
+        if request.POST:
+             form = ArticleForm(request.POST)
+             if form.is_valid():
+                form.save()
+            
+                return HttpResponseRedirect('/articles/all')
+   
+
+    return render(request, 'create_article.html',
+        { 'errors': errors,
+          'title': request.POST.get('title', ''),
+          'body': request.POST.get('body', ''),
+          'pub_date': request.POST.get('pub_date', ''),
+         })
+         base html of site
+         
+         
+         
+         <link rel="stylesheet" type="text/css" href="{% static "assets/css/default.css" %}">
+            
+            
+            
+            
+            
+            
+            body{
+            text-align:center;
+        
+        }
+        
+        #page{
+            width:960px;
+            text-align:left;
+            margin:10px auto 20px auto;
+            background-color:#0c0c0c;
+        }
+        #sidebar{
+            float:left;
+            width:200px;
+            border:1px solid #000;
+        }
+        
+        #content{
+            float:left;
+            text-align:center;
+            width:600px;
+            border:1px solid #f00;
+            padding:10px;
+            
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <p>{{article.unlikes}} people do not like this article  <a href="http://127.0.0.1:8000/articles/unlike/{{article.id}}/">   UNLIKE</a></p>
