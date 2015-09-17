@@ -80,7 +80,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mhtkmrarticles@gmail.com'
-EMAIL_HOST_PASSWORD = '17291729@'
+EMAIL_HOST_PASSWORD = 'Use_your_own_password'
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
